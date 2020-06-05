@@ -1,23 +1,50 @@
 import styled from 'styled-components';
 import { transparentize } from 'polished';
 
-import { desktopWidth } from '../../constants/screenBreakpoints';
+import {
+  desktopWidth,
+  mobileWidth,
+  tabletWidth,
+} from '../../constants/screenBreakpoints';
 
 export const Container = styled.div`
   display: flex;
   margin: 0 auto;
   max-width: ${desktopWidth};
   padding: 50px 0;
+
+  @media (max-width: ${mobileWidth}) {
+    flex-direction: column;
+  }
 `;
 
 export const SlackContainer = styled.div`
   flex: 4;
+  margin-left: 12px;
+
+  @media (max-width: ${tabletWidth}) {
+    flex: 2;
+  }
+
+  @media (min-width: calc(${desktopWidth} + 1px)) {
+    margin-left: 0;
+  }
 `;
 
 export const LinksContainer = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
+
+  &:last-child {
+    margin-right: 12px;
+  }
+
+  @media (min-width: calc(${desktopWidth} + 1px)) {
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 `;
 
 export const SectionTitle = styled.span`
