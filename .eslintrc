@@ -15,6 +15,7 @@
       "extensions": [".js", ".jsx"]
     }],
     "react/jsx-props-no-spreading": "off",
+    "import/no-extraneous-dependencies": "off",
     "prettier/prettier": [
       "error", {
         "semi": true,
