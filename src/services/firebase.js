@@ -17,9 +17,9 @@ const firebaseConfig = {
   measurementId: 'G-CDQX2WGX7D',
 };
 
-const appInitializer = firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 export const githubSignInProvider = new firebase.auth.GithubAuthProvider();
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
-export default appInitializer;
+export default firebase;
