@@ -1,19 +1,19 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Redirect, Route as RouterRoute } from 'react-router-dom';
 import Spinner from 'react-spinners/BounceLoader';
 import { Box } from 'grommet';
 
 import PageStructure from '../../Layout/PageStructure';
-import { UserContext } from '../../../contexts/userContext';
 
 export default function Route({
   component: Component,
   isPrivate = false,
   ...rest
 }) {
-  const { userData, loadingUser } = useContext(UserContext);
-  const signed = userData;
+  const { isLoaded, isEmpty } = useSelector((store) => store.firebase.auth);
+  const signed = !isEmpty;
 
   if (signed && !isPrivate) {
     return <Redirect to="/" />;
@@ -23,7 +23,7 @@ export default function Route({
     <RouterRoute
       {...rest}
       render={(props) => {
-        if (loadingUser) {
+        if (!isLoaded) {
           return (
             <Box fill align="center" justify="center">
               <Spinner color="#6699d4" />
