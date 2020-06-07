@@ -1,20 +1,24 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { Avatar, Menu, Box } from 'grommet';
 import { FiUser, FiMenu } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 import loGet from 'lodash.get';
 
 import { Container, HeaderContent, Logo, Divider, Links } from './styles';
+import { auth } from '../../services/firebase';
 import NovaticsLogo from '../../assets/novatics-logo.png';
-import { UserContext } from '../../contexts/userContext';
 
 export default function Header() {
-  const { logout, userData } = useContext(UserContext);
+  const authPayload = useSelector((store) => store.firebase.auth);
 
   return (
     <Container>
       <HeaderContent>
         <Box direction="row" align="center">
-          <Logo src={NovaticsLogo} />
+          <Link to="/">
+            <Logo src={NovaticsLogo} />
+          </Link>
           <Divider />
           <Links exact to="/">
             Dê um kudo
@@ -39,16 +43,16 @@ export default function Header() {
               <Avatar
                 size="small"
                 background="#ebebeb"
-                src={loGet(userData, ['photoURL'])}
+                src={loGet(authPayload, ['photoURL'])}
               >
                 <FiUser size={14} />
               </Avatar>
               <span className="user-name">
-                {loGet(userData, ['displayName'])}
+                {loGet(authPayload, ['displayName'])}
               </span>
             </Box>
           }
-          items={[{ label: 'Logout', onClick: logout }]}
+          items={[{ label: 'Sair', onClick: async () => auth.signOut() }]}
         />
       </HeaderContent>
     </Container>

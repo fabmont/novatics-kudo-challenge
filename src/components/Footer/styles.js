@@ -20,14 +20,46 @@ export const Container = styled.div`
 
 export const SlackContainer = styled.div`
   flex: 4;
-  margin-left: 12px;
+  color: #424242;
+  margin: 0 12px 20px 12px;
+
+  .slack-logo {
+    height: 30px;
+    margin-right: 12px;
+  }
+
+  .kudo-sample-box {
+    background-color: #E8E8E9;
+    padding: 6px;
+    margin-top: 12px;
+    border-radius: 6px;
+    display: inline-block;
+
+    p {
+      margin: 0;
+    }
+
+    .marked-hashtag {
+      color: blue;
+    }
+  }
+
+  .reactions-row div {
+    font-size: 12px;
+    margin-top: 12px;
+    color: gray;
+
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
 
   @media (max-width: ${tabletWidth}) {
     flex: 2;
   }
 
   @media (min-width: calc(${desktopWidth} + 1px)) {
-    margin-left: 0;
+    margin: 0;
   }
 `;
 
@@ -35,6 +67,7 @@ export const LinksContainer = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
+  margin: 0 12px 20px 12px;
 
   &:last-child {
     margin-right: 12px;
@@ -64,6 +97,10 @@ export const SocialRow = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: ${mobileWidth}) {
+    width: 50%;
+  }
 `;
 
 export const CopyrightLabel = styled.span`
