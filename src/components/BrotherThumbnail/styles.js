@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const Container = styled.div`
   position: relative;
@@ -48,10 +49,14 @@ export const BrotherName = styled.span`
 export const KudoButton = styled.button`
   padding: 12px;
   background-color: ${({ color }) => color || 'blue'};
-  border: 0;
+  border: 2px solid ${({ color }) => darken(0.08, color) || 'blue'};
   border-radius: 50%;
   width: 50px;
   height: 50px;
   font-size: 20px;
   cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
 `;

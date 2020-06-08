@@ -1,5 +1,7 @@
 import React from 'react';
 import { Box } from 'grommet';
+import moment from 'moment';
+import PropTypes from 'prop-types';
 
 import {
   Container,
@@ -9,12 +11,21 @@ import {
   BroocheCounter,
 } from './styles';
 
-export default function AvailableBroochesBoard() {
+export default function AvailableBroochesBoard({
+  learned,
+  thankful,
+  grateful,
+  lastChange,
+}) {
+  const updatedAt = lastChange
+    ? moment(lastChange).format('DD/MM/YYYY')
+    : '--/--/--';
+
   return (
     <Container>
       <Box direction="row" align="center" justify="between">
         <Title>Selos Disponíveis</Title>
-        <UpdatedTitle>Atualizado em 06/06/2020</UpdatedTitle>
+        <UpdatedTitle>Atualizado em {updatedAt}</UpdatedTitle>
       </Box>
       <Box
         direction="row"
@@ -25,21 +36,35 @@ export default function AvailableBroochesBoard() {
           <span role="img" aria-label="learned">
             👨‍🎓
           </span>
-          <BroocheCounter>2</BroocheCounter>
+          <BroocheCounter>{learned}</BroocheCounter>
         </BroocheContainer>
         <BroocheContainer bg="yellow">
           <span role="img" aria-label="thankful">
             👏
           </span>
-          <BroocheCounter>2</BroocheCounter>
+          <BroocheCounter>{thankful}</BroocheCounter>
         </BroocheContainer>
         <BroocheContainer bg="deepPink">
           <span role="img" aria-label="grateful">
             🙏
           </span>
-          <BroocheCounter>2</BroocheCounter>
+          <BroocheCounter>{grateful}</BroocheCounter>
         </BroocheContainer>
       </Box>
     </Container>
   );
 }
+
+AvailableBroochesBoard.propTypes = {
+  learned: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  thankful: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  grateful: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  lastChange: PropTypes.string,
+};
+
+AvailableBroochesBoard.defaultProps = {
+  learned: '-',
+  thankful: '-',
+  grateful: '-',
+  lastChange: PropTypes.string,
+};

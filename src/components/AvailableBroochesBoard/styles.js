@@ -10,6 +10,7 @@ export const Container = styled(Box)`
   border-radius: 6px;
   width: 100%;
   color: #424242;
+  margin-bottom: 24px;
 
   @media (min-width: ${tabletWidth}) {
     width: 450px;
