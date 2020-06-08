@@ -24,6 +24,7 @@ export const CardLogin = styled.div`
 
   .card-subtitle {
     color: ${transparentize(0.7, '#424242')};
+    margin-bottom: 20px;
   }
 
   @media (max-width: ${mobileWidth}) {
@@ -43,6 +44,28 @@ export const Logo = styled(Image)`
   max-width: 110px;
 `;
 
+export const LoginButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  padding: 12px;
+  background-color: #1f69f7;
+  transition: background-color 0.3s ease-in-out;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 4px;
+  margin-top: 18px;
+  width: 100%;
+  cursor: pointer;
+
+  &:hover {
+    transition: background-color 0.3s ease-in;
+    background-color: ${transparentize(0.25, '#1f69f7')};
+  }
+`;
+
 export const GithubButton = styled.button`
   display: flex;
   align-items: center;
@@ -53,9 +76,8 @@ export const GithubButton = styled.button`
   transition: background-color 0.3s ease-in-out;
   color: white;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 16px;
   border-radius: 4px;
-  margin-top: 30px;
   width: 100%;
   cursor: pointer;
 
@@ -67,4 +89,11 @@ export const GithubButton = styled.button`
   .github-icon {
     margin-right: 12px;
   }
+`;
+
+export const Divider = styled.div`
+  height: 2px;
+  width: 100%;
+  background-color: #ebebeb;
+  margin: 20px 0%;
 `;
