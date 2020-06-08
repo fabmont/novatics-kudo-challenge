@@ -4,7 +4,7 @@ A kudo web app for a Novatics software engineer challenge.
 
 ## Getting started
 
-Clone the repository by running the following command:
+Clone the branch `master` of the repository by running the following command:
 
      git clone https://github.com/fabmont/novatics-kudo-challenge.git
 
