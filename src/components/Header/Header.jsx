@@ -10,7 +10,7 @@ import { auth } from '../../services/firebase';
 import NovaticsLogo from '../../assets/novatics-logo.png';
 
 export default function Header() {
-  const authPayload = useSelector((store) => store.firebase.auth);
+  const authPayload = useSelector(({ firebase }) => firebase.profile);
 
   return (
     <Container>
