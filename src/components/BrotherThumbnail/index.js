@@ -5,7 +5,7 @@ import BrotherThumbnail from './BrotherThumbnail';
 import { firestore } from '../../services/firebase';
 
 export function giveKudo(payload) {
-  return async (dispatch) => {
+  return async () => {
     const { myUid, receiverUid, type, availableBrooches } = payload;
     const newAvailableBrooches = {};
 
@@ -48,9 +48,9 @@ export function giveKudo(payload) {
         .doc(myUid)
         .set({ availableBrooches: newAvailableBrooches }, { merge: true });
 
-      toast.success('Seu kudo foi dado com sucesso! ❤️');
+      return toast.success('Seu kudo foi dado com sucesso! ❤️');
     } catch (error) {
-      toast.error('Ocorreu um erro ao enviar o kudo 😢');
+      return toast.error('Ocorreu um erro ao enviar o kudo 😢');
     }
   };
 }
