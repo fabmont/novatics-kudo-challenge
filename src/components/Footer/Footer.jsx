@@ -115,7 +115,7 @@ export default function Footer() {
           <CopyrightLabel>Novatics © 2020</CopyrightLabel>
         </LinksContainer>
       </Container>
-      <BackToTop>
+      <BackToTop onClick={() => window.scrollTo(0, 0)}>
         <FiChevronUp className="chevron-icon" />
         voltar ao topo
       </BackToTop>
